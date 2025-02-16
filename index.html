@@ -7,14 +7,33 @@
     <style>
         body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             background-color: #f4f4f9;
             font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #FCFCFD;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px;
+            padding: 10px;
+            font-family: "Bebas Neue", monospace;
+            font-size: 50px;
+            font-weight: 700;
         }
         .container {
-            text-align: center;
+            margin-top: 60px;
+        }
+        .button-pair {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 10px 0;
         }
         .button-30 {
             align-items: center;
@@ -35,7 +54,6 @@
             overflow: hidden;
             padding-left: 16px;
             padding-right: 16px;
-            margin: 10px;
             position: relative;
             text-align: center;
             text-decoration: none;
@@ -47,9 +65,6 @@
             will-change: box-shadow, transform;
             font-size: 18px;
         }
-        .button-30:focus {
-            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-        }
         .button-30:hover {
             box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
             transform: translateY(-2px);
@@ -58,12 +73,32 @@
             box-shadow: #D6D6E7 0 3px 7px inset;
             transform: translateY(2px);
         }
+        .footer {
+            width: 100%;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            text-align: right;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
+    <div class="navbar">WEB BACKGROUND STYLES</div>
     <div class="container">
-        <a href="1/index.html" class="button-30" role="button">Go to Folder 1</a>
-        <a href="2/index.html" class="button-30" role="button">Go to Folder 2</a>
+        <div class="button-pair">
+            <a href="1/index.html" class="button-30" role="button">Go to Design 1</a>
+            <a href="https://github.com/M-IbrahimDEV/Background-effects/tree/main/1" class="button-30" role="button">Show Code</a>
+        </div>
+        <div class="button-pair">
+            <a href="2/index.html" class="button-30" role="button">Go to Design 2</a>
+            <a href="https://github.com/M-IbrahimDEV/Background-effects/tree/main/2" class="button-30" role="button">Show Code</a>
+        </div>
+    </div>
+    <div class="footer">
+        Created by:<b>M-Ibrahim</b><br/>(might have used a little help from AI)<br>
+        <a href="https://github.com/M-Ibrahim">Contact M.Ibrahim</a>
     </div>
 </body>
 </html>
