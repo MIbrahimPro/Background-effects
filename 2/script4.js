@@ -1,6 +1,50 @@
+let isDarkMode = false;
+
+
+// Colors
+let LINE_COLOR          = "#000000";      // Color for the dots/line
+let BG_COLOR_TOP        = "#f0f8ff";      // Top color of background gradient
+let BG_COLOR_BOTTOM     = "#ffffff";      // Bottom color of background gradient
+
+function toggleTheme() {
+  if (isDarkMode) {
+    LINE_COLOR              = "#000000";
+    BG_COLOR_TOP        = "#f0f8ff";      
+    BG_COLOR_BOTTOM     = "#ffffff"; 
+    document.body.classList.remove("light-mode");
+  } else {
+    
+    LINE_COLOR              = "#eeeeee";
+    BG_COLOR_TOP        = "#333333";      
+    BG_COLOR_BOTTOM     = "#111111"; 
+    document.body.classList.add("light-mode");
+  }
+  isDarkMode = !isDarkMode;
+  updateThemeColors();
+}
+
+function updateThemeColors() {
+  // Update the background shader uniforms.
+  if (bgMesh && bgMesh.material && bgMesh.material.uniforms) {
+    bgMesh.material.uniforms.color1.value.set(BG_COLOR_TOP);
+    bgMesh.material.uniforms.color2.value.set(BG_COLOR_BOTTOM);
+    bgMesh.material.needsUpdate = true;
+  }
+  
+  // Update the color for each dotted line's PointsMaterial.
+  linesData.forEach(line => {
+    if (line.pointsObj && line.pointsObj.material) {
+      line.pointsObj.material.color.set(LINE_COLOR);
+      line.pointsObj.material.needsUpdate = true;
+    }
+  });
+}
+
+
+
 // ==================== CONFIGURATION CONSTANTS ====================
-const TOTAL_LINES         = 25;    // Number of dotted lines
-const MIN_GAP             = 10;    // Minimum vertical gap between lines (pixels)
+const TOTAL_LINES         = 3000;    // Number of dotted lines
+const MIN_GAP             = 30;    // Minimum vertical gap between lines (pixels)
 
 // Wave parameters – note: we now interpret “wavelength” as the period length
 const MIN_WAVELENGTH      = 350;
@@ -10,7 +54,7 @@ const MAX_AMPLITUDE       = 60;
 
 // Opacity parameters for lines
 const MIN_OPACITY         = 0.1;
-const MAX_OPACITY         = 0.5;
+const MAX_OPACITY         = 0.3;
 
 // Speed parameters for lines
 const MIN_SPEED           = 0.2;
@@ -20,18 +64,14 @@ const MAX_SPEED           = 1.0;
 const SPRING_CONSTANT     = 0.02;  // How fast points are pulled toward target
 const FRICTION            = 0.70;  // Damping factor for point velocity
 const MOUSE_EFFECT_RADIUS = 500;   // Mouse repulsion radius (pixels)
-const REPULSION_STRENGTH  = 2.1;   // Strength of repulsion force
+const REPULSION_STRENGTH  = 1.5;   // Strength of repulsion force
 
 const DOT_SPACING         = 7;    // Spacing between dots along a line (pixels)
 
 // Dot size (line width) parameters
 const MIN_WIDTH           = 1;
-const MAX_WIDTH           = 3;
+const MAX_WIDTH           = 2;
 
-// Colors
-const LINE_COLOR          = "#000000";      // Color for the dots/line
-const BG_COLOR_TOP        = "#f0f8ff";      // Top color of background gradient
-const BG_COLOR_BOTTOM     = "#ffffff";      // Bottom color of background gradient
 
 // ==================== GLOBAL VARIABLES ====================
 let mouse = { x: -9999, y: -9999 };     // Mouse position (adjusted below)

@@ -1,0 +1,203 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Demo with Canvas Background</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="soup-loader">
+        <div class="pot"></div>
+        <div class="bubble bubble1"></div>
+        <div class="bubble bubble2"></div>
+        <div class="bubble bubble3"></div>
+    </div>
+    <hr>
+    <div class="pizza-loader">
+        <div class="pizza-slice"></div>
+    </div>
+
+
+    <hr>
+    <div class="fruit-loader">
+        <div class="fruit fruit1"></div>
+        <div class="fruit fruit2"></div>
+        <div class="fruit fruit3"></div>
+    </div>
+
+    <hr>
+    <div class="loader">
+        <div class="fork"></div>
+        <div class="spaghetti"></div>
+    </div>
+
+    <hr>
+
+<div class="pot-loader">
+    <div class="pot">
+      <div class="spaghetti s1"></div>
+      <div class="spaghetti s2"></div>
+      <div class="spaghetti s3"></div>
+      <div class="spoon"></div>
+    </div>
+  </div>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beautiful Pot Loader</title>
+  <style>
+    /* Overall page styling */
+    body {
+      background: #222;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .loader {
+      position: relative;
+      width: 220px;
+      height: 320px;
+    }
+    
+    /* --- Pot Style --- */
+    .pot {
+      position: absolute;
+      bottom: 80px; /* Leaves room for the fire below */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 90px;
+      background: linear-gradient(145deg, #666, #555);
+      border: 3px solid #444;
+      border-bottom: none;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    /* Enhanced handle to mimic a side profile */
+    .pot::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: 25px;
+      width: 30px;
+      height: 50px;
+      background: linear-gradient(145deg, #666, #555);
+      border: 3px solid #444;
+      border-left: none;
+      border-radius: 0 15px 15px 0;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    /* --- Bubbles Animation --- */
+    .bubbles {
+      /* Position the bubbles just above the pot */
+      position: absolute;
+      bottom: calc(80px + 90px); /* pot's bottom offset + pot's height */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 80px;
+      pointer-events: none;
+    }
+    .bubble {
+      position: absolute;
+      bottom: 0;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      opacity: 0;
+      animation: bubble 3s infinite ease-in-out;
+    }
+    /* Staggered positions and delays */
+    .bubble:nth-child(1) { left: 15%; animation-delay: 0s; }
+    .bubble:nth-child(2) { left: 35%; animation-delay: 0.5s; }
+    .bubble:nth-child(3) { left: 55%; animation-delay: 1s; }
+    .bubble:nth-child(4) { left: 75%; animation-delay: 1.5s; }
+    .bubble:nth-child(5) { left: 45%; animation-delay: 2s; }
+    
+    @keyframes bubble {
+      0%   { transform: translateY(0) scale(0.5); opacity: 0; }
+      15%  { opacity: 1; }
+      70%  { transform: translateY(-50px) scale(1); opacity: 1; }
+      100% { transform: translateY(-60px) scale(1.2); opacity: 0; }
+    }
+    
+    /* --- Fire Animation --- */
+    .fire {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 70px;
+      overflow: visible;
+    }
+    .flame {
+      position: absolute;
+      bottom: 0;
+      width: 25px;
+      height: 25px;
+      background: orange;
+      border-radius: 50% 50% 0 0;
+      opacity: 0.85;
+      animation: flicker 1.5s infinite ease-in-out;
+      filter: blur(0.5px);
+    }
+    .flame:nth-child(1) { left: 10px; animation-delay: 0s; }
+    .flame:nth-child(2) { left: 45px; animation-delay: 0.3s; }
+    .flame:nth-child(3) { left: 80px; animation-delay: 0.6s; }
+    .flame:nth-child(4) { left: 55px; animation-delay: 0.9s; }
+    
+    @keyframes flicker {
+      0%, 100% { transform: scaleY(1) translateY(0); opacity: 0.85; }
+      50% { transform: scaleY(1.4) translateY(-5px); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <!-- The Pot -->
+    <div class="pot"></div>
+    
+    <!-- Bubbles rising above the pot -->
+    <div class="bubbles">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+    
+    <!-- Flickering Fire below the pot -->
+    <div class="fire">
+      <div class="flame"></div>
+      <div class="flame"></div>
+      <div class="flame"></div>
+      <div class="flame"></div>
+    </div>
+  </div>
+</body>
+</html>

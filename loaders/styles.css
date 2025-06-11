@@ -1,0 +1,249 @@
+body {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: black;
+  /* cursor: none; */
+  /* color: #fff; */
+  /* background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent), radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent) 
+   background-color:rgba(12, 68, 14, 0.13); */
+}
+.soup-loader {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.pot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 50px;
+  background: #444;
+  border-radius: 0 0 75px 75px;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: bubble 2s infinite;
+}
+
+.bubble1 { animation-delay: 0s; }
+.bubble2 { animation-delay: 0.5s; }
+.bubble3 { animation-delay: 1s; }
+
+@keyframes bubble {
+  0% {
+    transform: translateX(-50%) translateY(0) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+/*===============================================================================*/
+
+
+.pizza-loader {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.pizza-slice {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Create a triangle for the slice */
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid #FFA500; /* Main cheese area */
+  border-top: 20px solid #FFC107;      /* Crust edge */
+  animation: slice-move 2s infinite;
+}
+
+@keyframes slice-move {
+  0% {
+    transform: translateX(-50%) translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-20px) rotate(15deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(0deg);
+  }
+}
+
+
+
+/*========================================================================================*/
+
+.fruit-loader {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.fruit {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.fruit1 { background: #ff6347; } /* Tomato red */
+.fruit2 { background: #ffa500; } /* Orange */
+.fruit3 { background: #adff2f; } /* Apple green */
+
+/* Position fruits around the center (adjust positions as needed) */
+.fruit1 { top: 10px; left: 80px; }
+.fruit2 { top: 80px; left: 140px; }
+.fruit3 { top: 140px; left: 80px; }
+
+
+/*===============================================================================*/
+
+
+
+
+
+/* CSS */
+.loader {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 50px auto;
+}
+
+/* Fork: a simple handle with two tines */
+.fork {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 40px;
+  background: #555;
+  transform: translate(-50%, -50%);
+}
+.fork::before,
+.fork::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: 10px;
+  background: #555;
+}
+.fork::before { left: -6px; }
+.fork::after { right: -6px; }
+
+/* Spaghetti: a dashed circular noodle that rotates */
+.spaghetti {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border: 3px dashed #FF6347;  /* Spaghetti sauce red */
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: twirl 2s linear infinite;
+}
+
+/* Keyframe for twirling animation */
+@keyframes twirl {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==================================================================*/
+
+
+/* CSS */
+.pot-loader {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  margin: 50px auto;
+}
+
+/* The pot */
+.pot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 150px;
+  height: 80px;
+  background: #333;
+  border-top-left-radius: 75px;
+  border-top-right-radius: 75px;
+  transform: translateX(-50%);
+}
+
+/* Spaghetti strands: narrow lines that rise and wiggle */
+.spaghetti {
+  position: absolute;
+  bottom: 80px;
+  width: 3px;
+  height: 30px;
+  background: #FF6347;
+  animation: boil 2s ease-in-out infinite;
+}
+.s1 { left: 30px; animation-delay: 0s; }
+.s2 { left: 60px; animation-delay: 0.3s; }
+.s3 { left: 90px; animation-delay: 0.6s; }
+
+/* Stirring spoon: rotates inside the pot */
+.spoon {
+  position: absolute;
+  width: 60px;
+  height: 8px;
+  background: #bbb;
+  border-radius: 4px;
+  top: 30px;
+  left: 45px;
+  transform-origin: left center;
+  animation: stir 1.5s ease-in-out infinite;
+}
+
+/* Keyframes for boiling spaghetti */
+@keyframes boil {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(15deg); }
+}
+
+/* Keyframes for stirring spoon */
+@keyframes stir {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(30deg); }
+  100% { transform: rotate(0deg); }
+}
